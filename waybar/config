@@ -1,0 +1,92 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 36,
+    "spacing": 4,
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "backlight", "battery", "network", "bluetooth"],
+
+    // --- Module Configuration ---
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": ""
+        }
+    },
+
+    "niri/window": {
+        "format": "{title}",
+        "max-length": 40,
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "Firefox",
+            "(.*) - Thunar": "Files",
+            "(.*) - Alacritty": "Terminal"
+        }
+    },
+
+    "clock": {
+        "format": "  {:%I:%M %p     %b %d}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>"
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-muted": " Muted",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume -l 1.0  @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+    },
+
+    "backlight": {
+        "device": "amdgpu_bl0",
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}   {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "network": {
+    // "interface": "wlan0", // (Optional: force it to watch Wi-Fi)
+    "format-wifi": "   {essid}",
+    "format-ethernet": "   Wired",
+    "format-disconnected": "   disconnected",
+    "format-disabled": "   off",	
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "format-linked": "{ifname} (No IP)",
+    "max-length": 50,
+    "on-click": "alacritty -e nmtui",   // <--- The Magic: Opens a CLI menu to pick Wi-Fi
+    "on-click-right": "nmcli radio wifi $(nmcli radio wifi | grep -q 'enabled' && echo off || echo on)"
+    },
+	
+    "bluetooth": {
+    "format": " {status}",
+    "format-disabled": " off",
+    "format-off": " off",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    "on-click-right": "bluetoothctl power $(bluetoothctl show | grep -q 'Powered: yes' && echo off || echo on)" 
+    },
+}

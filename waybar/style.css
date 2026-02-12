@@ -1,0 +1,107 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "CaskaydiaMono Nerd Font","Noto Sans", "Noto Sans Devanagari", "Noto Sans Kannada", "Noto Sans Tamil", "JoyPixels", "Noto Color Emoji";
+    font-size: 14px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: #111111;
+    color: #ffffff;
+    border-bottom: 2px solid #707070; /* Silver Accent */
+}
+
+/* Modules */
+#niri-workspaces {
+    background: #1e1e1e;
+    margin: 4px 4px;
+    padding: 0 10px;
+    border-radius: 8px;
+}
+
+#niri-workspaces button {
+    padding: 0 5px;
+    color: #707070;
+}
+
+#niri-workspaces button.active {
+    color: #ffffff;
+}
+
+#clock,
+#pulseaudio,
+#backlight,
+#battery,
+#tray {
+    padding: 0 6px;
+    margin: 0px 0px;
+    background: transparent;
+    color: #ffffff;
+}
+
+/* Battery States */
+#battery.charging {
+    color: #a6e3a1; /* Green */
+}
+
+#battery.warning {
+    color: #fab387; /* Orange */
+}
+
+#battery.critical {
+    color: #f38ba8; /* Red */
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#network {
+    padding: 0 6px;
+    margin: 0px 0px;
+    background: transparent;
+    color: #ffffff;
+}
+
+#network.disconnected,
+#network.disabled {
+    color: #707070; 
+}
+
+#network.ethernet {
+    color: #a6e3a1; /* Green for Wired */
+}
+
+#bluetooth {
+    padding: 0 6px;
+    margin: 0px 0px;
+    background: transparent;
+    color: #ffffff;
+}
+
+#bluetooth.connected {
+    color: #89b4fa; /* Blue for connected */
+}
+
+#bluetooth.off,
+#bluetooth.disabled {
+    color: #707070; /* Dimmed for off */
+}
+
+@keyframes blink {
+    to {
+        color: #ffffff;
+    }
+}
+
+/* Tooltip Styling */
+tooltip {
+    background: #111111;
+    border: 1px solid #707070;
+}
+
+tooltip label {
+    color: #ffffff;
+}

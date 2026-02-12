@@ -1,0 +1,43 @@
+[window]
+padding = { x = 10, y = 10 }
+dynamic_title = true
+opacity = 0.95
+
+[font]
+normal = { family = "CaskaydiaCove Nerd Font", style = "Regular" }
+size = 11.0
+
+[colors.primary]
+background = "#111111" # Matches your Waybar/Niri background
+foreground = "#ffffff" # Pure white text
+
+[selection]
+save_to_clipboard = true
+
+[colors.normal]
+black = "#111111"
+red = "#ffffff"     # Forced to white to avoid "bloat" colors
+green = "#ffffff"   # Forced to white
+yellow = "#ffffff"  # Forced to white
+blue = "#ffffff"    # Forced to white
+magenta = "#ffffff" # Forced to white
+cyan = "#ffffff"    # Forced to white
+white = "#a0a0a0"   # This is your Silver (Color 7)
+
+[colors.bright]
+black = "#4d4d4d"
+red = "#ffffff"
+green = "#ffffff"
+yellow = "#ffffff"
+blue = "#ffffff"
+magenta = "#ffffff"
+cyan = "#ffffff"
+white = "#ffffff"
+
+[[hints.enabled]]
+command = "xdg-open" # Opens URLs in your browser automatically
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "O", mods = "Control|Shift" }
